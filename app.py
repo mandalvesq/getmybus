@@ -5,7 +5,7 @@ import requests
 
 app = Flask(__name__)
 url = 'http://api.olhovivo.sptrans.com.br/v2.1'
-apikey = 'e10365af8aed9e34e765e828fe573e6d1961c02fe2a4d3fb7e55e1f'
+apikey = 'e10365af8aed9e34e765e828fe573e6d1961c02fe2a4d3fb7e55e1fc4e656bff'
 session = requests.session()
 stop_id = 340015329
 bus_id = 8000
@@ -21,7 +21,8 @@ def auth():
 @app.route('/Linha/Buscar?termosBusca=<string:cod_>', methods=['GET'])
 def linha(cookie):
     response = requests.get(url + '/Linha/Buscar?termosBusca={}'.format(bus_id), cookies=cookie, timeout=3)
-    result = response.cookies
+    result = response.content
+    print(result)
     
 @app.route('/home', methods=['GET'])
 def home():
